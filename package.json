@@ -1,0 +1,50 @@
+{
+  "name": "say-thanks",
+  "version": "0.0.0",
+  "description": "Send thank you note to opensource creators from your termial (using https://saythanks.io)",
+  "main": "index.js",
+  "bin": "cli.js",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "config": {
+    "baseUrl": "https://saythanks.io"
+  },
+  "keywords": [
+    "thanks",
+    "saythanks.io",
+    "cli"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/vladimyr/say-thanks.git"
+  },
+  "author": {
+    "email": "d.vladimyr@gmail.com",
+    "name": "Dario Vladovic",
+    "url": "https://github.com/vladimyr"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vladimyr/say-thanks/issues"
+  },
+  "homepage": "https://github.com/vladimyr/say-thanks",
+  "dependencies": {
+    "got": "^9.3.2",
+    "kleur": "^3.0.0",
+    "minimist": "^1.2.0",
+    "ora": "^3.0.0",
+    "p-finally": "^1.0.0",
+    "temp-write": "^3.4.0",
+    "url-join": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-semistandard": "^13.0.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.0",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0"
+  }
+}
