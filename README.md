@@ -19,13 +19,13 @@ $ npx say-thanks
 ```
 $ say-thanks --help
 
-say-thanks v0.0.0
+say-thanks v1.0.0
 
 Send thank you note to open source creators from your termial (uses
 https://saythanks.io)
 
 Usage:
-  $ say-thanks [recipient]
+  $ say-thanks <recipient>
 
 Options:
   -h, --help     Show help                                           [boolean]

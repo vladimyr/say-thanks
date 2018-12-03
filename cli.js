@@ -48,7 +48,7 @@ const help = `
   https://saythanks.io)
 
   Usage:
-    $ ${pkg.name} [recipient]
+    $ ${pkg.name} <recipient>
 
   Options:
     -h, --help     Show help                                           [boolean]
@@ -68,6 +68,10 @@ program(input, flags).catch(err => console.error(formatError(err.stack)));
 async function program([recipient], flags) {
   if (flags.version) return console.log(pkg.version);
   if (flags.help) return console.log(help);
+  if (!recipient) {
+    console.error(formatError('Missing recipient param!'));
+    return console.log(help);
+  }
   const [url, username] = await Promise.all([
     getInboxUrl(recipient),
     getGitUsername()
