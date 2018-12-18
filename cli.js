@@ -3,14 +3,12 @@
 'use strict';
 
 const { bold, green, red } = require('kleur');
-const argv = require('minimist')(process.argv.slice(2));
 const edit = require('./lib/edit.js');
 const exec = require('util').promisify(require('child_process').exec);
 const pkg = require('./package.json');
 const spinner = require('ora')();
 const { HTTPError, getInboxUrl, sayThanks } = require('./index.js');
 
-const flag = (argv, short, long) => ({ [long]: (short && argv[short]) || argv[long] });
 const isComment = line => /^\s*#/.test(line);
 const isEmpty = line => line.trim().length <= 0;
 const isLast = line => line.includes(scissors);
@@ -58,12 +56,13 @@ const help = `
   Report issue: ${green(pkg.bugs.url)}
 `;
 
-const flags = {
-  ...flag(argv, 'h', 'help'),
-  ...flag(argv, 'v', 'version')
-};
-const input = argv._;
-program(input, flags).catch(err => console.error(formatError(err.stack)));
+const options = require('minimist-options')({
+  help: { type: 'boolean', alias: 'h' },
+  version: { type: 'boolean', alias: 'v' }
+});
+const argv = require('minimist')(process.argv.slice(2), options);
+
+program(argv._, argv).catch(err => console.error(formatError(err.stack)));
 
 async function program([recipient], flags) {
   if (flags.version) return console.log(pkg.version);
@@ -93,7 +92,7 @@ async function program([recipient], flags) {
 }
 
 function formatError(message) {
-  return message.replace(/^(Error:\s+)*/, red().bold('Error: '));
+  return message.replace(/^\w*Error:\s+/, match => red().bold(match));
 }
 
 function parseNote(note) {

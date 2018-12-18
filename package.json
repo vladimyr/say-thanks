@@ -33,6 +33,7 @@
     "got": "^9.3.2",
     "kleur": "^3.0.0",
     "minimist": "^1.2.0",
+    "minimist-options": "^3.0.2",
     "ora": "^3.0.0",
     "p-finally": "^1.0.0",
     "temp-write": "^3.4.0",
